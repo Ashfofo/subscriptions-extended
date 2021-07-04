@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_subscriptions-extended_subscriptions-extended,subscriptions-extended.subscriptions-extended,model_subscriptions-extended_subscriptions-extended,base.group_user,1,1,1,1
