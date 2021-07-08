@@ -1,60 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+ 
+
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="subscriptions-extended.list">
-      <field name="name">subscriptions-extended list</field>
-      <field name="model">subscriptions-extended.subscriptions-extended</field>
+
+   
+    <!-- Adding extra trees to the alredy existing tree view -->
+    <record id="subscription_line_inherit_tree_view" model="ir.ui.view">
+      <field name="name">subscription.line.inherit</field>
+      <field name="model">sale.subscription</field>
+      <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <xpath expr="//field[@name='recurring_invoice_line_ids']/tree//field[@name='name']" position="after">
+          <field name="tag_ids" optional="show"/>
+          <field name="service_id" />	
+        </xpath>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="subscriptions-extended.action_window">
-      <field name="name">subscriptions-extended window</field>
-      <field name="res_model">subscriptions-extended.subscriptions-extended</field>
+    <record model="ir.actions.act_window" id="subscription_list_action">
+      <field name="name">Subscriptions</field>
+      <field name="res_model">sale.subscription</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="subscriptions-extended.action_server">
-      <field name="name">subscriptions-extended server</field>
-      <field name="model_id" ref="model_subscriptions-extended_subscriptions-extended"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="subscriptions-extended" id="subscriptions-extended.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="subscriptions-extended.menu_1" parent="subscriptions-extended.menu_root"/>
-    <menuitem name="Menu 2" id="subscriptions-extended.menu_2" parent="subscriptions-extended.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="subscriptions-extended.menu_1_list" parent="subscriptions-extended.menu_1"
-              action="subscriptions-extended.action_window"/>
-    <menuitem name="Server to list" id="subscriptions-extended" parent="subscriptions-extended.menu_2"
-              action="subscriptions-extended.action_server"/>
--->
   </data>
+  
 </odoo>
